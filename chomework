@@ -32,13 +32,16 @@ int main()
 	Gameboard[97]=44;
 	
 	int Player[playernum], endgame=0;
-	
+	for(i=0; i<playernum;i++)
+	{
+		Player[i]=1;
+	}
 	while(endgame==0)
 	{
-		for( j=0; j<playernum;j++)
+		for(j=0; j<playernum; j++ )
 		{    
 			sum= 1 +rand()%6;
-			Player[j]=Gameboard[sum + Player[j]];
+			Player[j]+=sum;
 		    
 			if(Player[j]==100)
 			{
@@ -47,10 +50,9 @@ int main()
 			}
 	        else if(Player[j]>100)
 		    {
-		    	Player[j]=Player[j]-Gameboard[dice];
+		    	Player[j]=Player[j]-Gameboard[sum];
 			}
 		}
 	}
-     
     return 0;
 }
