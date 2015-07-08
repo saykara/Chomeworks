@@ -36,6 +36,12 @@ int main()
 	{
 		Player[i]=1;
 	}
+	
+	for(i=0; i<playernum; i++)
+	{
+		printf("Face\tBox\tF.Box");
+	}
+	
 	while(endgame==0)
 	{
 		for(j=0; j<playernum; j++ )
@@ -47,16 +53,17 @@ int main()
 			}
 		    else
 		    {
-		    	Player[j] = Gameboard[sum + Player[j]];
+		    	Player[j] = Gameboard[sum + Player[j]-1];
 		   	}
 		    if(Player[j]==100)
 			{
 				endgame=1;
 				break;
 			}
-	       	printf("%d.oyuncu, %d\n",j+1,Player[j]);
-		}
+	   
+	  	}
 	}
-     printf("kazanan oyuncu %d,skoru %d",j+1,Player[j]);
-    return 0;
+     
+    
+	return 0;
 }
