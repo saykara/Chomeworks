@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+
+int main()
+{
+	int playernum, Gameboard[100], dice, sum ,i, j;
+	srand(time(NULL));
+	
+	printf("Please enter number of players:"); scanf("%d",&playernum);
+	
+	for(i=0; i<=99; i++)
+	{
+		Gameboard[i]= i+1;
+	}
+    Gameboard[1]=18;
+    Gameboard[15]=26;
+    Gameboard[29]=35;
+    Gameboard[51]=80;
+    Gameboard[60]=69;
+    Gameboard[69]=75;
+    Gameboard[81]=89;
+    Gameboard[92]=99;
+    
+	Gameboard[19]=5;
+    Gameboard[31]=12;
+    Gameboard[40]=10;
+	Gameboard[53]=31;
+    Gameboard[67]=55;
+	Gameboard[91]=60;
+	Gameboard[94]=49;
+	Gameboard[97]=44;
+	
+	int Player[playernum], endgame=0;
+	
+	while(endgame==0)
+	{
+		for(j++ ; j=0, Player[j]=0; j<playernum)
+		{    
+			sum= 1 +rand()%6;
+			Player[j]=Gameboard[sum + Player[j]];
+		    
+			if(Player[j]==100)
+			{
+				endgame=1;
+				break;
+			}
+	        else if(Player[j]>100)
+		    {
+		    	Player[j]=Player[j]-Gameboard[dice];
+			}
+		}
+	}
+     
+    return 0;
+}
