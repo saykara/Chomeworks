@@ -41,18 +41,22 @@ int main()
 		for(j=0; j<playernum; j++ )
 		{    
 			sum= 1 +rand()%6;
-			Player[j]+=sum;
-		    
-			if(Player[j]==100)
+			if (Player[j] + sum > 100)
+			{
+				continue;
+			}
+		    else
+		    {
+		    	Player[j] = Gameboard[sum + Player[j]];
+		   	}
+		    if(Player[j]==100)
 			{
 				endgame=1;
 				break;
 			}
-	        else if(Player[j]>100)
-		    {
-		    	Player[j]=Player[j]-Gameboard[sum];
-			}
+	       	printf("%d.oyuncu, %d\n",j+1,Player[j]);
 		}
 	}
+     printf("kazanan oyuncu %d,skoru %d",j+1,Player[j]);
     return 0;
 }
