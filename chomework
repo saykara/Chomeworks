@@ -4,17 +4,26 @@
 
 int main()
 {
-	int playernum, Gameboard[106], dice, sum ,i, j;
+	int playernum, Gameboard[100], dice, sum , ctrl, i, j;
 	srand(time(NULL));
+	ctrl=11;
 	
-	printf("Please enter number of players:"); scanf("%d",&playernum);
-	
-	for(i=0; i<=105; i++)
+	while(ctrl>10 || ctrl<0 )// In this loop, we taking player numbers from user.
+	{                
+	    printf("Enter number of players(1-10):"); scanf("%d",&playernum);
+        ctrl = playernum;
+        if(playernum>10 || playernum<0)
+        {
+             printf("Please enter a number betwenn 1-10\n");
+        }                
+    }
+	for(i=0; i<=100; i++) //I designed a gameboard and in this for loop assign the values of all gameboard. 
 	{
-		
-                 Gameboard[i]= i+1;
+	
+        Gameboard[i]= i+1;
        
 	}
+    //Ledders in game
     Gameboard[1]=18;
     Gameboard[15]=26;
     Gameboard[29]=35;
@@ -23,7 +32,7 @@ int main()
     Gameboard[69]=75;
     Gameboard[81]=89;
     Gameboard[92]=99;
-    
+    //Snakes in game
 	Gameboard[19]=5;
     Gameboard[31]=12;
     Gameboard[40]=10;
@@ -58,20 +67,22 @@ int main()
 		for(j=0; j<playernum; j++ )
 		{    
 			dice= 1 +rand()%6;
-			sum=Player[j];
-         	Player[j] = Gameboard[dice + Player[j]-1];
-         	if (Player[j]> 100)
-			{
-				Player[j]= Player[j] - dice;
-			}
-		   
-		    printf("%d\t%d\t", dice, sum + dice);
+         	if(Player[j]+dice<=100)
+			 {
+			 	Player[j] = Gameboard[dice + Player[j]-1];
+			 	sum=Player[j];
+			 }
+		     else
+		     {
+		     	sum=Player[j]+dice;
+			 }
+		    printf("%d\t%d\t", dice, sum);
 	        
 			if(Player[j] == 100)
 	        {
 	        	printf("WON!");
 			}
-			else if(sum + dice != Player[j])
+			else if(sum != Player[j])
 			{
 				printf("%d\t", Player[j]);
 			}
