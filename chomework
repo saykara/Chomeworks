@@ -4,14 +4,16 @@
 
 int main()
 {
-	int playernum, Gameboard[100], dice, sum ,i, j;
+	int playernum, Gameboard[106], dice, sum ,i, j;
 	srand(time(NULL));
 	
 	printf("Please enter number of players:"); scanf("%d",&playernum);
 	
-	for(i=0; i<=99; i++)
+	for(i=0; i<=105; i++)
 	{
-		Gameboard[i]= i+1;
+		
+                 Gameboard[i]= i+1;
+       
 	}
     Gameboard[1]=18;
     Gameboard[15]=26;
@@ -57,14 +59,12 @@ int main()
 		{    
 			dice= 1 +rand()%6;
 			sum=Player[j];
-			if (Player[j] + dice > 100)
+         	Player[j] = Gameboard[dice + Player[j]-1];
+         	if (Player[j]> 100)
 			{
-				continue;
+				Player[j]= Player[j] - dice;
 			}
-		    else
-		    {
-		    	Player[j] = Gameboard[dice + Player[j]-1];
-		   	}
+		   
 		    printf("%d\t%d\t", dice, sum + dice);
 	        
 			if(Player[j] == 100)
@@ -89,7 +89,7 @@ int main()
 	  	}
 	  	printf("\n");
 	}
-     
-    
+    getchar();
+    getchar();
 	return 0;
 }
